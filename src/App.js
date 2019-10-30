@@ -62,9 +62,10 @@ class App extends React.Component {
     console.log(new_user)
     var user_list = this.state.users
     user_list.push(new_user)
+    let unique_user_list = [...new Set(user_list)];
     var message_list = this.state.messages
     message_list.push(this.format_event(JSON.parse(e.data), "Join"))
-    this.setState({users: user_list, messages: message_list})
+    this.setState({users: unique_user_list, messages: message_list})
   }
 
   new_message(e) {
